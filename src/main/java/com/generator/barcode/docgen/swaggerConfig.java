@@ -47,12 +47,11 @@ public class swaggerConfig {
     private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
             .title("Gerador de qr codes")
-            .description("Gerador de qr code EAN13, PDF417, code 128, QRCode")
+            .description("Gerador de qr code EAN13, PDF417, CODE128, QRCode. \n Seviço alocado em: https://github.com/spring-framework-primeiros-projetos/QRCode-generator")
             .version("0.1.0")
-            .license("private")
-            .licenseUrl("Private")
+            .license("Apache 2.0")
+            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
             .contact(new Contact("Alvaro Pereira do Nascimento", "https://www.linkedin.com/in/%C3%A1lvaro-nascimento-a937466a/", "alvaro.nascimentoapn@gmail.com") {})
-            .contact(new Contact("Github", "https://github.com/spring-framework-primeiros-projetos/QRCode-generator", "none") {})
             .build();
     }
     
