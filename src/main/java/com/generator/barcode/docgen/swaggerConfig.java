@@ -52,6 +52,7 @@ public class swaggerConfig {
             .license("private")
             .licenseUrl("Private")
             .contact(new Contact("Alvaro Pereira do Nascimento", "https://www.linkedin.com/in/%C3%A1lvaro-nascimento-a937466a/", "alvaro.nascimentoapn@gmail.com") {})
+            .contact(new Contact("Github", "https://github.com/spring-framework-primeiros-projetos/QRCode-generator", "none") {})
             .build();
     }
     
