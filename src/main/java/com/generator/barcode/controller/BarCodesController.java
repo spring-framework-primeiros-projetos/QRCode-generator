@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Alvaro
  */  
-@Api(value = "Controlador para gerar códigos de Barra",description = "Controlador para gerar códigos de Barras EAN13, PDF417, CODE128 e QRCode.")
+@Api(value = "Controlador para gerar códigos de Barra",description = "Controlador para gerar códigos de Barras EAN13, PDF417, code 128, QRCode  ")
 @RestController
 @RequestMapping("/barcodes")
 public class BarCodesController {
