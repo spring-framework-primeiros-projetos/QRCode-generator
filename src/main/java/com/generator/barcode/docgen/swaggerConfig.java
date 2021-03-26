@@ -47,8 +47,7 @@ public class swaggerConfig {
     private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
             .title("Gerador de Códigos de Barras")
-            .description("Gerador de qr code EAN13, PDF417, CODE128, QRCode. \n Seviço alocado em: https://github.com/spring-framework-primeiros-projetos/QRCode-generator"
-                    + "\n Algumas requisições não funcionam nesta ferramenta corretamente, sugiro o uso do postman ou insominia")
+            .description("Gerador de qr code EAN13, PDF417, CODE128, QRCode. \n Seviço alocado em: https://github.com/spring-framework-primeiros-projetos/QRCode-generator")
             .version("0.1.0")
             .license("Apache 2.0")
             .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
