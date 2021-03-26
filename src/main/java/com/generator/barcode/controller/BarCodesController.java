@@ -12,6 +12,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
+import javax.imageio.ImageIO;
+import org.json.JSONObject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +31,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Alvaro
  */  
-@Api(value = "Controlador para gerar códigos de Barra",description = "Controlador para gerar códigos de Barras EAN13, PDF417, code 128, QRCode  ")
+@Api(value = "Controlador para gerar códigos de Barra",
+        description = "Controlador para gerar códigos de Barras EAN13, PDF417, CODE128 e QRCode."        
+    )
 @RestController
 @RequestMapping("/barcodes")
 public class BarCodesController {
@@ -78,5 +84,27 @@ public class BarCodesController {
     public ResponseEntity<BufferedImage> zxingQRCode (@RequestBody String text)
     throws Exception {
         return ResponseEntity.ok(ZXing.generateQRCodeImage(text));
+    }
+    
+    @ApiOperation(value = "Gerador de QRCodde com ZXing que retorna um um texto em bytecode 64 em formato json")
+    @GetMapping(value = "/zxing/qrcodejson")
+    public ResponseEntity<String> zxingQRCodeJson (@RequestBody String text)
+    throws Exception {
+        ;
+        /*Primeiro, importa-se a imagem e a converte para um array de bytes*/
+    BufferedImage imagem = ZXing.generateQRCodeImage8(text);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream(); 
+    ImageIO.write(imagem, "jpg", baos);
+    Object arrayBytes = baos.toByteArray();
+
+    /*Depois usamos a biblioteca Base64 para converter o array de bytes em uma string*/
+    String encoded = Base64.getEncoder().encodeToString((byte[]) arrayBytes);
+
+    /*Por fim, utilizamos a biblioteca JSON Simple para criar uma string no formato JSON utilizando os dados do encoded que conseguimos ao converter o array de bytes com o Base64*/
+
+    JSONObject jo = new JSONObject();
+    jo.put("imagem", encoded);
+    //String jsonImagem = jo.toString();
+        return ResponseEntity.ok(jo.toString());
     }
 }

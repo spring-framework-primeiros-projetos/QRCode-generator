@@ -36,6 +36,14 @@ public class ZXing {
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
     
+    public static BufferedImage generateQRCodeImage8(String barcodeText) throws Exception {
+        QRCodeWriter barcodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = 
+          barcodeWriter.encode(barcodeText, BarcodeFormat.QR_CODE, 800, 800);
+
+        return MatrixToImageWriter.toBufferedImage(bitMatrix);
+    }
+    
     public static BufferedImage generateCode128BarcodeImage(String barcodeText) throws Exception {
         Code128Writer  barcodeWriter = new Code128Writer();
         BitMatrix bitMatrix = barcodeWriter.encode(barcodeText, BarcodeFormat.CODE_128, 300, 50);
